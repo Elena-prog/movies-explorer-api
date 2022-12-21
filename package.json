@@ -1,0 +1,33 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elena-prog/movies-explorer-api.git"
+  },
+  "keywords": [],
+  "author": "Tsivinskaya Elena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elena-prog/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/Elena-prog/movies-explorer-api#readme",
+  "dependencies": {
+    "celebrate": "^15.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "mongoose": "^6.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
