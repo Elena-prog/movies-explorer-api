@@ -41,7 +41,7 @@ const movieSchema = new mongoose.Schema(
       required: true,
     },
     movieId: {
-      type: String,
+      type: Number,
       required: true,
     },
     nameRU: {
@@ -51,26 +51,17 @@ const movieSchema = new mongoose.Schema(
     nameEN: {
       type: String,
       required: true,
-    }
-  },  
+    },
+  },
   {
     versionKey: false,
   },
-)
+);
 
-userSchema.path('image').validate((link) => {
-  const urlRegex = REGEXP_URL;
-  return urlRegex.test(link);
-}, 'Invalid URL.');
+movieSchema.path('image').validate((link) => REGEXP_URL.test(link), 'Invalid URL.');
 
-userSchema.path('trailerLink').validate((link) => {
-  const urlRegex = REGEXP_URL;
-  return urlRegex.test(link);
-}, 'Invalid URL.');
+movieSchema.path('trailerLink').validate((link) => REGEXP_URL.test(link), 'Invalid URL.');
 
-userSchema.path('thumbnail').validate((link) => {
-  const urlRegex = REGEXP_URL;
-  return urlRegex.test(link);
-}, 'Invalid URL.');
+movieSchema.path('thumbnail').validate((link) => REGEXP_URL.test(link), 'Invalid URL.');
 
-module.exports = mongoose.model('movie', movieSchema)
+module.exports = mongoose.model('movie', movieSchema);
