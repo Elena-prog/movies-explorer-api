@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const router = require('./routes/index');
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/rate-limiter');
 
 const PORT = process.env.PORT || 3001;
 
@@ -35,6 +36,7 @@ app.use(requestLogger);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(limiter);
 
 app.use('/', router);
 
