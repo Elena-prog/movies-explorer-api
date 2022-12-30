@@ -5,12 +5,14 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-const router = require('./routes/index');
+const router = require('./routes');
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/rate-limiter');
+const DEV_ADRESS_DB = require('./config');
 
 const PORT = process.env.PORT || 3001;
+const ADRESS_DB = process.env.ADRESS_DB || DEV_ADRESS_DB;
 
 const app = express();
 
@@ -26,7 +28,7 @@ const options = {
   credentials: true,
 };
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect(ADRESS_DB, {
   autoIndex: true,
 });
 

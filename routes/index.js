@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { celebrate } = require('celebrate');
 const { createUser, login, logout } = require('../controllers/users');
 const { registrationValidation, loginValidation } = require('../utils/loginValidation');
+const { NOT_FOUND_MESSAGE_PAGE } = require('../constants');
 
 const users = require('./users');
 const movies = require('./movies');
@@ -15,6 +16,6 @@ router.use('/users', users);
 router.use('/movies', movies);
 router.post('/signout', logout);
 
-router.all('/*', (req, res, next) => next(new NotFoundError('Страница не найдена')));
+router.all('/*', (req, res, next) => next(new NotFoundError(NOT_FOUND_MESSAGE_PAGE)));
 
 module.exports = router;
